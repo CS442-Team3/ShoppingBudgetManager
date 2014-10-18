@@ -1,4 +1,4 @@
-package com.example.shoppingbudgetmanager;
+package com.cs442team3.shoppingbudgetmanager;
 
 import android.app.Activity;
 import android.os.Bundle;

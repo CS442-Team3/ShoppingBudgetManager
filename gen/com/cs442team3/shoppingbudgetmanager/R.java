@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.shoppingbudgetmanager;
+package com.cs442team3.shoppingbudgetmanager;
 
 public final class R {
     public static final class attr {
