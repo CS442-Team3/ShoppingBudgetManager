@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:background="@android:color/white"/>
+    <RelativeLayout
+        android:id="@+id/amount_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        
+    <EditText
+        android:id="@+id/amount_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:text="@string/amount_tv" 
+        android:layout_centerInParent="true">
+        <requestFocus />
+    </EditText>
+	</RelativeLayout>
+	<View
+    android:layout_width="fill_parent"
+    android:layout_height="30dp"
+    android:background="@android:color/white"/>
+	<RelativeLayout 
+	    android:id="@+id/duration_spinner_rl"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content">
+
+	    <Spinner
+	        android:id="@+id/duration_spinner"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:entries="@array/duration_spinner_array"
+	        android:spinnerMode="dropdown" />
+
+	</RelativeLayout>
+	<View
+    android:layout_width="fill_parent"
+    android:layout_height="30dp"
+    android:background="@android:color/white"/>
+	<RelativeLayout 
+	    android:id="@+id/duration_radio_rl"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:visibility="visible">
+	    <RadioGroup
+	        android:id="@+id/duration_radio"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        >
+	        <RadioButton android:id="@+id/radio_till30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/till30"/>
+    <RadioButton android:id="@+id/radio_1month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_1month"/>
+	    </RadioGroup>
+	</RelativeLayout>
+	<View
+    android:layout_width="fill_parent"
+    android:layout_height="30dp"
+    android:background="@android:color/white"/>
+	<RelativeLayout 
+	    android:id="@+id/continue_rl"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content">
+	    <Button
+	        android:id="@+id/continue_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:text="@string/_continue"
+	        />
+	</RelativeLayout>
+</LinearLayout>

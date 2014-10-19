@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_frgmnt_month_tv"
+        android:text="October 18, 2014"/>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/background_light"/>
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_frgmnt_rl1">
+        <TextView 
+            android:id="@+id/details_frgmnt_date_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="20dp"
+            android:text="Name"/>
+
+       <TextView 
+            android:id="@+id/details_frgmnt_amount_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_alignParentRight="true"
+            android:textSize="20dp"
+            android:paddingRight="20dp"
+            android:text="Amount"/>
+    </RelativeLayout>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/background_dark"/>
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_frgmnt_rl">
+        <TextView 
+            android:id="@+id/details_frgmnt_date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="20dp"
+            android:text="Milk"/>        
+
+       <TextView 
+            android:id="@+id/details_frgmnt_amount_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/details_frgmnt_iv"
+            android:textSize="20dp"
+            android:paddingRight="20dp"
+            android:text="$2.39"/>
+       <ImageView 
+           android:id="@+id/details_frgmnt_iv"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:src="@drawable/delete_icon"/>
+    </RelativeLayout>
+    
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_frgmnt_rl2">
+        <TextView 
+            android:id="@+id/details_frgmnt_date_tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="20dp"
+            android:text="Oreos"/>
+        
+
+       <TextView 
+            android:id="@+id/details_frgmnt_amount_tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/details_frgmnt_iv2"
+            android:textSize="20dp"
+            android:paddingRight="20dp"
+            android:text="$4"/>
+       <ImageView 
+           android:id="@+id/details_frgmnt_iv2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:src="@drawable/delete_icon"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_frgmnt_rl3">
+        <TextView 
+            android:id="@+id/details_frgmnt_date_tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="20dp"
+            android:text="Kimchi Salad"/>
+        
+
+       <TextView 
+            android:id="@+id/details_frgmnt_amount_tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/details_frgmnt_iv3"
+            android:textSize="20dp"
+            android:paddingRight="20dp"
+            android:text="$9"/>
+       <ImageView 
+           android:id="@+id/details_frgmnt_iv3"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:src="@drawable/delete_icon"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_frgmnt_rl4">
+        <TextView 
+            android:id="@+id/details_frgmnt_date_tv4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="20dp"
+            android:text="Rice"/>
+        
+
+       <TextView 
+            android:id="@+id/details_frgmnt_amount_tv4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/details_frgmnt_iv4"
+            android:textSize="20dp"
+            android:paddingRight="20dp"
+            android:text="$10.99"/>
+       <ImageView 
+           android:id="@+id/details_frgmnt_iv4"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:src="@drawable/delete_icon"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_frgmnt_rl5">
+        <TextView 
+            android:id="@+id/details_frgmnt_date_tv5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="20dp"
+            android:text="Whole-wheat bread"/>
+        
+
+       <TextView 
+            android:id="@+id/details_frgmnt_amount_tv5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/details_frgmnt_iv5"
+            android:textSize="20dp"
+            android:paddingRight="20dp"
+            android:text="$3.50"/>
+       <ImageView 
+           android:id="@+id/details_frgmnt_iv5"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:src="@drawable/delete_icon"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_frgmnt_rl6">
+        <TextView 
+            android:id="@+id/details_frgmnt_date_tv6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="20dp"
+            android:text="Brocolli"/>
+        
+
+       <TextView 
+            android:id="@+id/details_frgmnt_amount_tv6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/details_frgmnt_iv6"
+            android:textSize="20dp"
+            android:paddingRight="20dp"
+            android:text="$1.79"/>
+       <ImageView 
+           android:id="@+id/details_frgmnt_iv6"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:src="@drawable/delete_icon"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_frgmnt_rl7">
+        <TextView 
+            android:id="@+id/details_frgmnt_date_tv7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="20dp"
+            android:text="Hershey's syrup"/>
+        
+
+       <TextView 
+            android:id="@+id/details_frgmnt_amount_tv7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/details_frgmnt_iv7"
+            android:textSize="20dp"
+            android:paddingRight="20dp"
+            android:text="$5.67"/>
+       <ImageView 
+           android:id="@+id/details_frgmnt_iv7"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:src="@drawable/delete_icon"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/details_frgmnt_btns_rl">
+        <Button 
+            android:id="@+id/details_frgmnt_scanbarcode_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/btns_view"
+            android:layout_alignParentBottom="true"
+            android:text="Scan Barcode"/>
+        <View 
+            android:id="@+id/btns_view"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/background_light"/>
+        <Button 
+            android:id="@+id/details_frgmnt_entermanually_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btns_view"
+            android:layout_alignParentBottom="true"
+            android:text="New Item"/>
+    </RelativeLayout>
+    </LinearLayout>
+    
