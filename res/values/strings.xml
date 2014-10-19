@@ -15,5 +15,19 @@
     </string-array>
 
     <string name="title_activity_details_fragment">DetailsFragment</string>
-
+        <string name="title_activity_charts">Charts</string>
+    <string name="title_activity_activity3">Activity3</string>
+    <string name="title_activity_activity1">Activity1</string>
+    <string name="title_activity_activity4">Activity4</string>
+    <string name="title_activity_activity6">Activity6</string>
+    <string-array name="list">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+        <item>Item 5</item>
+    </string-array>
+<string name="title_activity_activity7">Activity7</string>
+<string name="title_activity_activity8">Activity8</string>
+<string name="title_activity_activity10">Activity10</string>
 </resources>

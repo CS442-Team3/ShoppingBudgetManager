@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="17"
+        android:minSdkVersion="11"
         android:targetSdkVersion="21" />
 
     <application
@@ -22,6 +22,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="org.achartengine.GraphicalActivity" />
+        <activity
+            android:name=".Activity2"
+            android:label="@string/title_activity_charts" >
+        </activity>
+        <activity
+            android:name=".Activity3"
+            android:label="@string/title_activity_activity3" >
+        </activity>
+        <activity
+            android:name=".Activity1"
+            android:label="@string/title_activity_activity1" >
+        </activity>
+        <activity
+            android:name=".Activity4"
+            android:label="@string/title_activity_activity4" >
+        </activity>
+        <activity
+            android:name=".Activity6"
+            android:label="@string/title_activity_activity6" >
+        </activity>
+        <activity 
+            android:name=".BudgetEdit_Activity"
+            android:label="@string/title_activity_activity7"></activity>
+        <activity 
+            android:name=".Details_Fragment"
+            android:label="@string/title_activity_activity8"></activity>
+        <activity 
+            android:name=".MonthlyMain_Activity"
+            android:label="@string/title_activity_activity10"></activity>
     </application>
 
 </manifest>
