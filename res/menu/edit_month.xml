@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.cs442team3.shoppingbudgetmanager.ThisMonth" >
+
+
+    <item
+        android:id="@+id/clear_all"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/options_clear"/>
+    
+    <item
+        android:id="@+id/edit_items"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/options_edit"/>
+    
+    <item
+        android:id="@+id/edit_budget"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/options_reset"/>
+    
+</menu>

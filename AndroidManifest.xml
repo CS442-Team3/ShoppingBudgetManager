@@ -5,8 +5,10 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="19"
         android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -22,36 +24,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="org.achartengine.GraphicalActivity" />
         <activity
-            android:name=".Activity2"
-            android:label="@string/title_activity_charts" >
+            android:name=".LoginPage"
+            android:label="@string/title_activity_login_page" >
         </activity>
         <activity
-            android:name=".Activity3"
-            android:label="@string/title_activity_activity3" >
+            android:name=".AddNew"
+            android:label="@string/title_activity_add_new" >
         </activity>
         <activity
-            android:name=".Activity1"
-            android:label="@string/title_activity_activity1" >
+            android:name=".EditMonth"
+            android:label="@string/title_activity_this_month" >
         </activity>
         <activity
-            android:name=".Activity4"
-            android:label="@string/title_activity_activity4" >
+            android:name=".MonthDetail"
+            android:label="@string/title_activity_month_detail" >
         </activity>
         <activity
-            android:name=".Activity6"
-            android:label="@string/title_activity_activity6" >
+            android:name=".AllMonths"
+            android:label="@string/title_activity_all_months" >
         </activity>
-        <activity 
-            android:name=".BudgetEdit_Activity"
-            android:label="@string/title_activity_activity7"></activity>
-        <activity 
-            android:name=".Details_Fragment"
-            android:label="@string/title_activity_activity8"></activity>
-        <activity 
-            android:name=".MonthlyMain_Activity"
-            android:label="@string/title_activity_activity10"></activity>
+        <activity
+            android:name=".AddMonth"
+            android:label="@string/title_activity_add_month" >
+        </activity>
+        <activity
+            android:name=".Barcode"
+            android:label="@string/title_activity_barcode" >
+        </activity>
+        <activity
+            android:name=".AddItem"
+            android:label="@string/title_activity_add_item" >
+        </activity>
     </application>
 
 </manifest>
