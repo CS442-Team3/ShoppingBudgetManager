@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:rl="http://schemas.android.com/apk/libs/com.ebay.RLSample"
+    android:id="@+id/preview_frame_overlay"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+	<LinearLayout 
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:orientation="horizontal">
+	 	<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:layout_marginLeft="50dip"
+			android:orientation="horizontal" >
+			<com.ebay.redlasersdk.uicomponents.RotatedTextView
+				android:id="@+id/hint_text"
+				android:layout_width="300dip"
+				android:layout_height="30dip"
+				android:layout_marginLeft="30dip"
+				android:layout_marginRight="50dip"
+				android:gravity="center"
+				android:textSize="20sp"
+				android:textColor="@android:color/white"
+				rl:orientation="portrait" />
+			<View
+				android:id="@+id/view_finder"
+				android:layout_width="90dip"
+				android:layout_height="260dip"
+				android:layout_gravity="center"
+				android:background="@drawable/viewfinder_white"/>
+			<com.ebay.redlasersdk.uicomponents.RotatedTextView
+			    android:id="@+id/num_found_text" 
+			    android:layout_width="300dip" 
+			    android:layout_height="50dip" 
+			    android:gravity="center" 
+			    android:textSize="20sp" 
+			    android:textColor="@android:color/white" 
+			    android:layout_marginTop="10dip" 
+			    android:layout_marginBottom="10dip"
+			    rl:orientation="portrait" />
+			
+		</LinearLayout>
+		<LinearLayout 
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:orientation="vertical"
+			android:gravity="center"
+			android:padding="20dip" >
+			<com.ebay.redlasersdk.uicomponents.RotatedImageView
+				android:id="@+id/overlay_logo"
+				android:layout_width="50dip"
+				android:layout_height="50dip"
+				android:src="@drawable/redlaser_logo"
+				rl:orientation="portrait" />
+			<View
+				android:layout_height="0.5dip"
+				android:layout_width="fill_parent"
+				android:background="#ffffff"
+				android:layout_marginLeft="10dip"
+				android:layout_marginRight="10dip" />
+			<com.ebay.redlasersdk.uicomponents.RotatedTextView
+				android:id="@+id/overlay_text"
+				android:layout_width="175dip"
+				android:layout_height="40dip"
+				android:gravity="center"
+				android:textColor="#ffffff"
+				android:textSize="12sp"
+				android:text="@string/logo_message"
+				rl:orientation="portrait" />
+		</LinearLayout> 
+		<LinearLayout 
+			android:id="@+id/buttons_view"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent" 
+			android:orientation="vertical"
+			android:gravity="center"
+			android:padding="20dip">
+			<com.ebay.redlasersdk.uicomponents.RotatedButton
+				android:id="@+id/button_toggle_torch"
+				android:layout_width="90dip" 
+				android:layout_height="60dip"
+				android:layout_alignParentBottom="true"
+				rl:orientation="portrait"
+				android:text="Light"  />
+	 	 	<com.ebay.redlasersdk.uicomponents.RotatedButton
+		 		android:id="@+id/button_request_image"
+				android:layout_width="90dip" 
+				android:layout_height="60dip"
+				rl:orientation="portrait"
+				android:text="get image"  /> 
+			<com.ebay.redlasersdk.uicomponents.RotatedButton
+		 		android:id="@+id/button_done"
+				android:layout_width="90dip" 
+				android:layout_height="60dip"
+				rl:orientation="portrait"
+				android:text="done" />  
+		</LinearLayout>
+	</LinearLayout>
+</FrameLayout>

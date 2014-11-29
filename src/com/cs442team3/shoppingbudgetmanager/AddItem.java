@@ -65,6 +65,12 @@ public class AddItem extends Activity implements OnClickListener{
 		ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,db_records);
 		
 		item_name.setAdapter(adapter);
+		
+		Intent intent = getIntent();
+		String name = intent.getStringExtra("Barcode_Result");
+		
+		if(name!=null)
+			item_name.setText(name);
 	}
 
 	@Override

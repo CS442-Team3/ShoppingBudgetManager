@@ -1,0 +1,173 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+
+    <TextView
+        android:id="@+id/SDK_Version_TextField"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:text="Barcode Types" />
+    
+    <LinearLayout 
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="48dip"
+		android:background="@android:color/background_dark"
+		android:textColor="@android:color/primary_text_dark"
+		android:gravity="center" >
+
+	     <ToggleButton android:id="@+id/toggleEAN13"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textOn="EAN13"
+	        android:textOff="EAN13"/>
+
+	     <ToggleButton
+	         android:id="@+id/toggleEAN8"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:textOff="EAN8"
+	         android:textOn="EAN8" />
+
+	     <ToggleButton android:id="@+id/toggleEAN5"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textOn="EAN5"
+	        android:textOff="EAN5"/>
+	     <ToggleButton android:id="@+id/toggleEAN2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textOn="EAN2"
+	        android:textOff="EAN2"/>
+
+	     <ToggleButton
+	         android:id="@+id/toggleUPCE"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:textOff="UPC-E"
+	         android:textOn="UPC-E" />
+
+	</LinearLayout>
+
+    <LinearLayout 
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="48dip"
+		android:background="@android:color/background_dark"
+		android:textColor="@android:color/primary_text_dark"
+		android:gravity="center" >
+	     
+	     <ToggleButton android:id="@+id/toggle128"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textOn="Code 128"
+	        android:textOff="Code 128"/>
+	     
+	     <ToggleButton android:id="@+id/toggle39"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textOn="Code 39"
+	        android:textOff="Code 39"/>
+	     
+	     <ToggleButton android:id="@+id/toggle93"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textOn="Code 93"
+	        android:textOff="Code 93"/>
+
+	     <ToggleButton
+	         android:id="@+id/toggleITF"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:textOff="ITF"
+	         android:textOn="ITF" />
+
+    </LinearLayout>
+	     
+	<LinearLayout 
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="48dip"
+		android:background="@android:color/background_dark"
+		android:textColor="@android:color/primary_text_dark"
+		android:gravity="center" >
+
+		<ToggleButton
+		    android:id="@+id/toggleCodabar"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textOff="Codabar"
+		    android:textOn="Codabar" />
+
+		<ToggleButton
+		    android:id="@+id/toggleDatabar"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textOff="Databar"
+		    android:textOn="Databar" />
+
+		<ToggleButton
+		    android:id="@+id/toggleDatabarExpanded"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textOff="Databar Expanded"
+		    android:textOn="Databar Expanded" />
+
+	</LinearLayout>
+
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="48dip"
+	    android:background="@android:color/background_dark"
+	    android:gravity="center"
+	    android:orientation="horizontal"
+	    android:textColor="@android:color/primary_text_dark" >
+
+	    <ToggleButton
+	        android:id="@+id/toggleQR"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textOff="QR Code"
+	        android:textOn="QR Code" />
+
+	    <ToggleButton
+	        android:id="@+id/toggleDataMatrix"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textOff="DataMatrix"
+	        android:textOn="DataMatrix" />
+
+	    <ToggleButton
+	        android:id="@+id/togglePDF417"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textOff="PDF417"
+	        android:textOn="PDF417" />
+	</LinearLayout>
+	   
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:layout_marginTop="15dip"
+        android:text="Orientation" />
+    
+    	<ToggleButton android:id="@+id/toggleOrientation"
+	        android:layout_width="100dip"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dip"
+	        android:textOn="Landscape"
+	        android:textOff="Portrait"/>
+
+</LinearLayout>

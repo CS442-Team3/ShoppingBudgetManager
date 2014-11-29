@@ -3,6 +3,9 @@ package com.cs442team3.shoppingbudgetmanager;
 import java.util.Calendar;
 import java.util.Locale;
 
+import com.ebay.redlasersdk.RedLaserExtras;
+import com.ebay.redlasersdk.RedLaserExtras.RLScannerReadyState;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +26,18 @@ public class MainActivity extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		SharedPreferences preference = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = preference.edit();
+		
+		// Check if barcode available
+		RLScannerReadyState rlState = RedLaserExtras.checkReadyStatus(getBaseContext());
+		if(rlState!=RLScannerReadyState.EvalModeReady
+				&& rlState!=RLScannerReadyState.LicensedModeReady)
+		{
+			editor.putBoolean("isBarcode", false);
+			editor.commit();
+			Log.d("Barcode", "Barcode initialization failed");
+		}
+		
     	if(preference.contains("name"))
     	{
     		
@@ -55,15 +70,13 @@ public class MainActivity extends Activity implements OnClickListener{
     	    	
     	        startActivity(intent);
     	        finish();
-    		}
-    		
-    		
+    		}    		
     	}
     	else {
     		Intent intent = new Intent(this,LoginPage.class);
             startActivity(intent);
             finish();
-		}
+		}		
 	}
 
 	@Override

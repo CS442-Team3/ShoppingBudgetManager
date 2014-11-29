@@ -29,4 +29,12 @@
     <string name="options_reset">Reset Budget</string>
     <string name="title_activity_add_item">AddItem</string>
 
+    <string name="code_types">Barcode Types</string>
+	<string name="logo_message">Barcode must be upright.\nAvoid glare and shadows.</string>
+	<string name="guidance_string">Try moving the camera close to each part of the barcode</string>
+	<string name="light">Light</string>
+	<string name="overlay_logo_contentdescription">Shopping Budget Manager</string>
+	<string name="done_button">Done</string>
+	<string name="getImage_button">Get Image</string>
+	
 </resources>
