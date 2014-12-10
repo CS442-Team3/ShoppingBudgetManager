@@ -6,15 +6,16 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.cs442team3.shoppingbudgetmanager.AddItem" >
+    tools:context="com.cs442team3.shoppingbudgetmanager.AddItem"
+    android:background="@android:color/white" >
 
     <AutoCompleteTextView
         android:id="@+id/item_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="62dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/hint_item" >
 
@@ -23,11 +24,11 @@
 
     <EditText
         android:id="@+id/item_price"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/item_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="numberDecimal"
         android:hint="@string/hint_price"/>
@@ -36,8 +37,9 @@
         android:id="@+id/btn_add_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/item_price"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
         android:text="@string/item_add" />
 
     

@@ -8,18 +8,14 @@ import java.util.Set;
 
 import com.ebay.redlasersdk.BarcodeResult;
 import com.ebay.redlasersdk.BarcodeScanActivity;
-import com.ebay.redlasersdk.RedLaserExtras;
-import com.ebay.redlasersdk.RedLaserExtras.RLScannerReadyState;
-
-import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -50,6 +46,7 @@ public class Barcode extends BarcodeScanActivity {
 	
 	SharedPreferences preference;
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		
@@ -186,6 +183,7 @@ public class Barcode extends BarcodeScanActivity {
 	 *  session in real time.
 	 */
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onScanStatusUpdate(Map<String, Object> scanStatus) {
 		String foundText = "0 Barcodes Found";
@@ -293,5 +291,4 @@ public class Barcode extends BarcodeScanActivity {
 			return PREF_ORIENTATION_LANDSCAPE;
 		}
 	}    
-
 }

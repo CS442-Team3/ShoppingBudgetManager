@@ -2,6 +2,7 @@ package com.cs442team3.shoppingbudgetmanager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import android.app.Activity;
@@ -18,6 +19,8 @@ public class MonthDetail extends Activity {
 
 	ListView listview;
 	DBClass dbobj;
+	CustomListAdapter adapter;
+	List<Item> itemList = new ArrayList<Item>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,9 @@ public class MonthDetail extends Activity {
 		setContentView(R.layout.activity_month_detail);
 		
 		listview = (ListView) findViewById(R.id.items_list);
+		
+		adapter = new CustomListAdapter(this, itemList);
+		listview.setAdapter(adapter);
 		
 		Calendar c = Calendar.getInstance();
 		String month = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
@@ -36,30 +42,19 @@ public class MonthDetail extends Activity {
 		
 		Cursor cursor = database.query(month, coloums,null,null,null,null, null);
 		
-		ArrayList<String> db_records = new ArrayList<String>();
-		int id;
-		String data="";
 		while(cursor.moveToNext())
-		{
-			id = cursor.getInt(0);
-			data += id+" ";
-			data += cursor.getString(1);
-			data += "     ";
-			data += cursor.getString(2);
-			data += "  ";
-			data += cursor.getString(3);
-			data += " $";
-			Log.d("DB Values",data);
-			db_records.add(data);
-			data = "";
-			
+		{			
+			Item i = new Item();
+			i.setId(cursor.getInt(0));
+			i.setName(cursor.getString(1));
+			i.setDate(cursor.getString(2));
+			i.setPrice(cursor.getString(3));
+			itemList.add(i);
 		}
-		
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, android.R.id.text1,db_records);
-		listview.setAdapter(adapter);
+		adapter.notifyDataSetChanged();
 	}
 
-	@Override
+/*	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.month_detail, menu);
@@ -76,5 +71,5 @@ public class MonthDetail extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
+	}*/
 }

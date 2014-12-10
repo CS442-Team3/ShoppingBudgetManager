@@ -15,7 +15,7 @@
       data.addColumn('number', 'VALUE');
       data.addRows([['Budget Available', Android.getNum1()],['Budget Spent', Android.getNum2()]]);
 
-      var options = {'title':'Budget Overview','width':350,'height':350};
+      var options = {'title':'Budget Overview','width':300,'height':150};
 
       var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
       chart.draw(data, options);
@@ -24,6 +24,6 @@
   </head>
 
   <body>
-    <div id="chart_div" style="width:350; height:350"></div>
+    <div id="chart_div" style="width:100%; height:150"></div>
   </body>
 </html>

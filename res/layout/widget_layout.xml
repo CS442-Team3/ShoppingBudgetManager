@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="4dip"
+    android:background="@drawable/widget_shape"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/widget_budget"
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dip"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/widget_budget"
+        android:textColor="@android:color/black" >
+    </TextView>
+    
+	<TextView
+        android:id="@+id/widget_spent"
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:layout_margin="4dip"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/widget_budget_spent"
+        android:textColor="@android:color/black" >
+    </TextView>
+    
+	<TextView
+        android:id="@+id/widget_balance"
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dip"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/widget_budget_spent"
+        android:textColor="@android:color/black" >
+    </TextView>
+    
+</LinearLayout> 

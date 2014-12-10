@@ -30,6 +30,11 @@ public class LoginPage extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		String user_name = text.getText().toString();
+		if(user_name == "")
+		{
+			Toast.makeText(this,"User Name Cant Be Empty", Toast.LENGTH_SHORT).show();
+			return;
+		}
 		SharedPreferences preference = getSharedPreferences("prefs", Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = preference.edit();
     	editor.putString("name",user_name);

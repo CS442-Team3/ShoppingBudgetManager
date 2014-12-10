@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_row_selector"
+    android:padding="8dp" >
+ 
+    <!-- ID -->
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dp"
+        android:textSize="@dimen/id"
+        android:paddingTop="2sp" />
+ 
+    <!-- Name -->
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/id"
+        android:layout_toRightOf="@+id/id"
+        android:textSize="@dimen/name"
+        android:textStyle="bold" />
+     
+    <!-- Date -->
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_marginTop="1dip"
+        android:layout_toRightOf="@+id/id"
+        android:textColor="@color/date"
+        android:textSize="@dimen/date" />
+ 
+    <!-- Price -->
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/id"
+        android:textSize="@dimen/price" />
+ 
+</RelativeLayout>

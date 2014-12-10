@@ -2,10 +2,12 @@ package com.cs442team3.shoppingbudgetmanager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,8 +17,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -25,6 +31,8 @@ public class EditMonth extends Activity {
 	WebView webView;
 	ListView listview;
 	DBClass dbobj;
+	CustomListAdapter adapter;
+	List<Item> itemList = new ArrayList<Item>();
 	
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
@@ -39,9 +47,12 @@ public class EditMonth extends Activity {
 	     
 		listview = (ListView) findViewById(R.id.listView1);
 		
+		adapter = new CustomListAdapter(this, itemList);
+		listview.setAdapter(adapter);
+		
 		Calendar c = Calendar.getInstance();
 		String month = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
-
+		setTitle("Edit "+month);
 		dbobj = new DBClass(this,month);
 		SQLiteDatabase database = dbobj.getWritableDatabase();
 		
@@ -49,28 +60,54 @@ public class EditMonth extends Activity {
 		
 		Cursor cursor = database.query(month, coloums,null,null,null,null, null);
 		
-		ArrayList<String> db_records = new ArrayList<String>();
-		int id;
-		String data="";
 		while(cursor.moveToNext())
 		{
-			id = cursor.getInt(0);
-			data += id+" ";
-			data += cursor.getString(1);
-			data += "     ";
-			data += cursor.getString(2);
-			data += "  ";
-			data += cursor.getString(3);
-			data += " $";
-			Log.d("DB Values",data);
-			db_records.add(data);
-			data = "";
-			
+			Item i = new Item();
+			i.setId(cursor.getInt(0));
+			i.setName(cursor.getString(1));
+			i.setDate(cursor.getString(2));
+			i.setPrice(cursor.getString(3));
+			itemList.add(i);
 		}
 		
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, android.R.id.text1,db_records);
-		listview.setAdapter(adapter);
-		
+		adapter.notifyDataSetChanged();
+		listview.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View view, int position,
+					long id) {
+
+				// List<Item> itemlist = new ArrayList<Item>();
+				Calendar c = Calendar.getInstance();
+				String month = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
+				String[] columns = {"_id","name","price"};
+				DBClass dbobj = new DBClass(getBaseContext(),month);
+				SQLiteDatabase database = dbobj.getWritableDatabase();
+				Cursor cursor = database.query(month, columns, null, null, null, null, null);
+				List<Item> items = new ArrayList<Item>();
+				while(cursor.moveToNext())
+				{
+					Item i = new Item();
+					i.setId(cursor.getInt(0));
+					i.setName(cursor.getString(1));
+					i.setPrice(cursor.getString(2));
+					items.add(i);
+				}
+				database.close();
+				if(items.size()>0&&position>0)
+				{
+					Log.v("Position", ""+position);
+					int ID = items.get(position-1).getId();
+					ID=(position==1)?ID+1:ID;
+					Log.v("clicked item", items.get(ID).getId()+" "+items.get(ID).getName()+" $"+items.get(ID).getPrice());
+					Intent intent = new Intent(getBaseContext(),EditItem.class);
+					intent.putExtra("Edit_Id", items.get(ID).getId());
+					intent.putExtra("Edit_Name", items.get(ID).getName());
+					intent.putExtra("Edit_Price", items.get(ID).getPrice());
+					startActivity(intent);
+				}
+			}
+		});
 		database.close();
 	}
 
@@ -91,10 +128,6 @@ public class EditMonth extends Activity {
 	            clear_all();
 	            return true;
 	            
-	        case R.id.edit_items:
-	            edit_items();
-	            return true;
-	            
 	        case R.id.edit_budget:
 	            edit_budget();
 	            return true;
@@ -113,11 +146,6 @@ public class EditMonth extends Activity {
         finish();
 	}
 
-	private void edit_items() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	private void clear_all() {
 		
 		SharedPreferences preference = getSharedPreferences("prefs", Context.MODE_PRIVATE);
@@ -127,13 +155,19 @@ public class EditMonth extends Activity {
     	
     	Calendar c = Calendar.getInstance();
 		String month = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
-		
+	
 		dbobj = new DBClass(this,month);
 		SQLiteDatabase database = dbobj.getWritableDatabase();
-		database.execSQL("delete from "+ month); 
+		database.execSQL("delete from "+ month+" where _id > 0");
+		
+		ContentValues content1 = new ContentValues();
+		content1.put("price",0);
+		database.update(month, content1,"_id "+"="+0, null);
+		
 		database.close();
 		
 		onCreate(null);
+
 	}
 
 	public class WebAppInterface {

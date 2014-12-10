@@ -10,6 +10,7 @@ package com.cs442team3.shoppingbudgetmanager;
 import java.util.AbstractCollection;
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 
 import com.ebay.redlasersdk.BarcodeResult;
 
-public class BarcodeListAdapter extends BaseAdapter 
+@SuppressLint("ViewHolder") public class BarcodeListAdapter extends BaseAdapter 
 {
 	private final Context context;
 	private final ArrayList<BarcodeResult> values;

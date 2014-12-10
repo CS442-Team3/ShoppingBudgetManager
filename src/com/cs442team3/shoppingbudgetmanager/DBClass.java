@@ -43,9 +43,11 @@ public class DBClass extends SQLiteOpenHelper{
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		
 		onCreate(db);
-		
 	}
+	
+	@Override
+	public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion)
+	{}
 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ShoppingBudgetManager</string>
+    <string name="app_name">Shopping Budget Manager</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="hint">Enter Your Name!!</string>
@@ -10,24 +10,27 @@
     <string name="edit_month">Edit Month</string>
     <string name="this_detail">Month Detail</string>
     <string name="all_months">All Months</string>
-    <string name="title_activity_login_page">LoginPage</string>
-    <string name="title_activity_add_new">AddNew</string>
-    <string name="title_activity_this_month">ThisMonth</string>
-    <string name="title_activity_month_detail">MonthDetail</string>
-    <string name="title_activity_all_months">AllMonths</string>
+    <string name="title_activity_login_page">Login Page</string>
+    <string name="title_activity_add_new">Add New</string>
+    <string name="title_activity_this_month">This Month</string>
+    <string name="title_activity_month_detail">Month Detail</string>
+    <string name="title_activity_all_months">All Months</string>
+    <string name="title_activity_edit_item">Edit Item</string>
     <string name="budget_hint">Enter Month Budget</string>
     <string name="month_confirm">Confirm</string>
-    <string name="add_barcode">Barcode</string>
-    <string name="add_manual">Manual</string>
+    <string name="add_barcode">Scan</string>
+    <string name="add_manual">Add Details</string>
     <string name="hint_item">Enter Item Name</string>
     <string name="hint_price">Enter Item Price in $</string>
     <string name="item_add">Add Item</string>
-    <string name="title_activity_add_month">AddMonth</string>
+    <string name="item_edit">Done</string>
+    <string name="item_delete">Delete Item</string>
+    <string name="title_activity_add_month">Add Month</string>
     <string name="title_activity_barcode">Barcode</string>
     <string name="options_clear">Clear All</string>
     <string name="options_edit">Edit Items</string>
     <string name="options_reset">Reset Budget</string>
-    <string name="title_activity_add_item">AddItem</string>
+    <string name="title_activity_add_item">Add Item</string>
 
     <string name="code_types">Barcode Types</string>
 	<string name="logo_message">Barcode must be upright.\nAvoid glare and shadows.</string>
@@ -36,5 +39,9 @@
 	<string name="overlay_logo_contentdescription">Shopping Budget Manager</string>
 	<string name="done_button">Done</string>
 	<string name="getImage_button">Get Image</string>
+	<string name="widget_budget">Budget Total : </string>
+    <string name="widget_budget_spent">Budget Spent : </string>
+    <string name="widget_budget_balance">Budget Balance : </string>
+    <string name="title_activity_previous_month">PreviousMonth</string>
 	
 </resources>

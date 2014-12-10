@@ -2,29 +2,14 @@ package com.cs442team3.shoppingbudgetmanager;
 
 
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
 import org.apache.commons.lang3.StringUtils;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-
 import com.ebay.redlasersdk.RedLaserExtras;
 import com.ebay.redlasersdk.BarcodeResult;
 import com.ebay.redlasersdk.BarcodeScanActivity;
@@ -45,7 +30,6 @@ import android.view.View.OnClickListener;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.ListView;
 
 @SuppressLint("SetJavaScriptEnabled") 
 public class AddNew extends Activity implements OnClickListener{
@@ -54,7 +38,6 @@ public class AddNew extends Activity implements OnClickListener{
 	WebView webView;
 	BarcodeListAdapter listAdapter;
 	boolean isLaunchingAnotherActivity = false;
-	private static final String SAVED_INSTANCE_LIST = "BarcodeList";
 	SharedPreferences preference;
 	SharedPreferences.Editor editor;
 	
@@ -65,7 +48,7 @@ public class AddNew extends Activity implements OnClickListener{
 		 webView = (WebView)findViewById(R.id.webView_add_item);
 	     webView.addJavascriptInterface(new WebAppInterface(), "Android");
 	     webView.getSettings().setJavaScriptEnabled(true); 
-	     webView.loadUrl("file:///android_asset/chart.html");
+	     webView.loadUrl("file:///android_asset/chartBig.html");
 	     
 	     btn_manual = (Button) findViewById(R.id.btn_manual);
 	     
@@ -156,7 +139,7 @@ public class AddNew extends Activity implements OnClickListener{
 		}
 	}
 
-	@Override
+/*	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.add_new, menu);
@@ -173,7 +156,7 @@ public class AddNew extends Activity implements OnClickListener{
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
+	}*/
 	
 	
 	public class WebAppInterface {
@@ -244,14 +227,24 @@ public class AddNew extends Activity implements OnClickListener{
 			if (barcodes != null)
 			{
 				Log.d("BarcodeResult", "Barcode found");
-				
+				if(barcodes.size()>0)
+				{
 				BarcodeResult bcResult = barcodes.get(0);
 				if(!bcResult.barcodeString.isEmpty())
 				{
 					String barcode = bcResult.barcodeString.toString();
 					String name = barcode;
+					String price = "";
 					try {
 						name = new GetNameFromBarcode().execute(barcode).get();
+						if(name.contains("~")==true)
+						{
+							String[] names=StringUtils.split(name, "~");
+							if(names[0].length()>0)
+								name = names[0];
+							if(names[1].length()>0)
+								price = names[1];
+						}
 					} catch (InterruptedException e) {
 						name = barcode;
 						Log.d("BarcodeResult", e.getLocalizedMessage()+" "+e.getCause());
@@ -259,12 +252,26 @@ public class AddNew extends Activity implements OnClickListener{
 						name = barcode;
 						Log.d("BarcodeResult", e.getLocalizedMessage()+" "+e.getCause());
 					}
+					catch (IndexOutOfBoundsException e)
+					{
+						name = barcode;
+						Log.d("BarcodeResult", e.getLocalizedMessage()+" "+e.getCause());
+					}
 					
-					intent.putExtra("Barcode_Result", name);
-					Log.d("BarcodeResult", "String - "+name);			
+					intent.putExtra("Barcode_Result_Name", name);
+					intent.putExtra("Barcode_Result_Price", price);
+					Log.d("BarcodeResult", "String Name - "+name+" ; Price - "+price);			
 				}			
 				else
 					Log.d("BarcodeResult", "String not found");
+				}
+				/*catch(Exception ex)
+				{
+					Intent i = new Intent(this,MainActivity.class);
+					startActivity(i);
+					finish();
+					Log.d("BarcodeResult", ex.getLocalizedMessage()+" "+ex.getCause());
+				}*/
 			}
 			Log.d("BarcodeResut", "Starting AddItem activity");
 	        startActivity(intent);
@@ -272,9 +279,11 @@ public class AddNew extends Activity implements OnClickListener{
 		}
 	}
 	
+	@SuppressWarnings("resource")
 	private String getNameFromBarcode(String key)
 	{
 		String name=key;
+		String price = "";
 		Log.d("NameFromBarcode", "Reached getNameFromBarcode with key = "+key);
 		
 		URL url;
@@ -283,13 +292,12 @@ public class AddNew extends Activity implements OnClickListener{
 			URLConnection conn = url.openConnection();			 
 			// open the stream and put it into BufferedReader
 			Scanner scanner = new Scanner(conn.getInputStream());
-			scanner.useDelimiter("elation.autotrack;");
+			scanner.useDelimiter(",\"imagebase\"");
 			/*BufferedReader br = new BufferedReader(
                                new InputStreamReader(conn.getInputStream()));
 			Log.d("NameFromBarcode", "html received in bufferreader");*/
 			String html= scanner.next();
-			String line="";
-/*			while((line = br.readLine())!=null)
+			/*			while((line = br.readLine())!=null)
 				html.concat(line);*/
 			Log.d("NameFromBarcode", "html filled");
 			Log.d("NameFromBarcode", html);
@@ -308,15 +316,20 @@ public class AddNew extends Activity implements OnClickListener{
 			}*/
 			if(html!=null)
 			{
-			name = StringUtils.substringBetween(html, "\"keywords\"", "type=\"application/javascript\">");
+			name = StringUtils.substringBetween(html, "{\"title\":\"", "\",\"ddkey\"");
 			Log.d("NameFromBarcode", "meta tag found");
 			Log.d("NameFromBarcode", "meta string = " + name);
-			String[] names = name.split("\\,");
-			name = names[0].replace("    ", "");
-			name = name.substring(10);
+			//String[] names = name.split("\\,");
+			//name = names[0].replace("    ", "");
+			//name = name.substring(10);
 			if(name.replace(" ", "")=="")
 				name=key;
 			Log.d("NameFromBarcode", "First string extracted = "+name);
+			
+			price = StringUtils.substringBetween(html, "\"price\":\"","\",\"");
+			Log.d("PriceFromBarcode", "price = "+price);
+			if(price!=null)
+				name+=("~"+price);
 			}
 			
 		} catch (MalformedURLException e) {

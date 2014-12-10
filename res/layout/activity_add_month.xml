@@ -6,24 +6,24 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.cs442team3.shoppingbudgetmanager.Activity1" >
+    tools:context="com.cs442team3.shoppingbudgetmanager.Activity1"
+    android:background="@android:color/white" >
 
     <Button
         android:id="@+id/btn_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/editText_month_amount"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="10dp"
         android:text="@string/month_confirm" />
 
     <EditText
         android:id="@+id/editText_month_amount"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/budget_hint"
         android:inputType="number" />

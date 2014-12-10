@@ -10,12 +10,6 @@
         android:title="@string/options_clear"/>
     
     <item
-        android:id="@+id/edit_items"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/options_edit"/>
-    
-    <item
         android:id="@+id/edit_budget"
         android:orderInCategory="100"
         android:showAsAction="never"

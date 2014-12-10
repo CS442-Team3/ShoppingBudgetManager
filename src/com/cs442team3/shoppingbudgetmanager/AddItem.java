@@ -67,16 +67,19 @@ public class AddItem extends Activity implements OnClickListener{
 		item_name.setAdapter(adapter);
 		
 		Intent intent = getIntent();
-		String name = intent.getStringExtra("Barcode_Result");
+		String name = intent.getStringExtra("Barcode_Result_Name");
+		String price = intent.getStringExtra("Barcode_Result_Price");
 		
 		if(name!=null)
 			item_name.setText(name);
+		if(price!=null)
+			item_price.setText(price);
 	}
 
-	@Override
+/*	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.add_item, menu);
+		//getMenuInflater().inflate(R.menu.add_item, menu);
 		return true;
 	}
 
@@ -90,13 +93,21 @@ public class AddItem extends Activity implements OnClickListener{
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
+	}*/
 
 	@SuppressLint("SimpleDateFormat")
 	@Override
 	public void onClick(View v) {
 		
 		String name = item_name.getText().toString();
+		
+		SharedPreferences preference = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = preference.edit();
+		
+		float spent = preference.getFloat("budget_spent",0);
+		float total = preference.getFloat("budget_total", 0);
+		float remaining = total-spent;
+		
 		if(name == "")
 		{
 			Toast.makeText(this,"Item Name Cannot Be Empty", Toast.LENGTH_SHORT).show();
@@ -108,12 +119,17 @@ public class AddItem extends Activity implements OnClickListener{
 			Toast.makeText(this,"Item Name Cannot Be Empty", Toast.LENGTH_SHORT).show();
 			return;
 		}
-		
+		if(Float.parseFloat(price) > remaining)
+		{
+			Toast.makeText(this, "Price Is Greater Than The Remaining Budget\nIncrease Your Budget", Toast.LENGTH_SHORT).show();
+			return;
+		}
 		Calendar c = Calendar.getInstance();
 		String month = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
 		
 		SimpleDateFormat df = new SimpleDateFormat("dd-MMM");
 		String date = df.format(c.getTime());
+		
 		
 		dbobj = new DBClass(this,month);
 		SQLiteDatabase database = dbobj.getWritableDatabase();
@@ -130,13 +146,10 @@ public class AddItem extends Activity implements OnClickListener{
 		content.put("price",price);
 		
 		long id = database.insert(month,null, content);
+		database.close();
 		
 		if(id > 0)
 		{
-			SharedPreferences preference = getSharedPreferences("prefs", Context.MODE_PRIVATE);
-			SharedPreferences.Editor editor = preference.edit();
-			
-			float spent = preference.getFloat("budget_spent",0);
 			float item_price = Float.parseFloat(price);
 			
 			spent = spent + item_price;
@@ -144,13 +157,22 @@ public class AddItem extends Activity implements OnClickListener{
 			editor.putFloat("budget_spent",spent);
 			editor.commit();
 			
+			database = dbobj.getWritableDatabase();
+			ContentValues content1 = new ContentValues();
+			content1.put("price",spent);
+			database.update(month, content1,"_id "+"="+0, null);
+			database.close();
+			
 			Intent intent = new Intent(this,MainActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("EXIT", true);
 	        startActivity(intent);
 	        finish();
 		}
+
 		else
 		{
-			Toast.makeText(this, "Item Failed To Add Plz Try Again",Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Item Failed To Add Please Try Again",Toast.LENGTH_SHORT).show();
 		}
 		
 	}
